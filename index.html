@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <audio src="a.mp3"></audio>
+        <audio src="b.mp3"></audio>
+        <audio src="c.mp3"></audio>
+
+    <div id="songs">
+     <p>Click here for the song</p>
+    </div>
+    <script>
+        var song= document.querySelectorAll('audio');
+        var songDiv=document.querySelector('#songs');
+        var arrayOfSongs=[...song];
+        
+        var isPlaying=false;
+
+        songDiv.addEventListener('click', function(elem){
+            if(isPlaying===false){
+                document.querySelector(`audio[src="${elem.target.innerText}"]`).play();
+                isPlaying=true;
+        }
+            else{
+                document.querySelector(`audio[src="${elem.target.innerText}"]`).pause();
+                document.querySelector(`audio[src="${elem.target.innerText}"]`).currentTime=0;
+                isPlaying=false;
+            }
+        })
+
+        arrayOfSongs.forEach(function(gana){
+            songDiv.innerHTML += `<h4>${gana.getAttribute('src')}</h4><br>`;
+           
+        })
+ 
+
+    </script>
+</body>
+</html>
